@@ -36,11 +36,13 @@ class MyApp extends StatelessWidget {
                       maxDate: DateTime(2024),
                       initialDate: DateTime(2023, 1),
                       disabledDayPredicate: (date) {
-                        return date.weekday == DateTime.sunday || date.weekday == DateTime.saturday;
+                        return date.weekday == DateTime.sunday ||
+                            date.weekday == DateTime.saturday;
                       },
                       disabledCellsDecoration: const BoxDecoration(
                         color: Colors.green,
                       ),
+                      otherMonthStyle: TextStyle(color: Colors.black),
                     ),
                   ),
                 ],
