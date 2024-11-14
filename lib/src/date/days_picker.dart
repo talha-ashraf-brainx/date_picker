@@ -455,7 +455,7 @@ class _DaysPickerState extends State<DaysPicker> {
               previousPageSemanticLabel: widget.previousPageSemanticLabel,
               nextPageSemanticLabel: widget.nextPageSemanticLabel,
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 30),
             Expanded(
               child: PageView.builder(
                 scrollDirection: Axis.horizontal,
