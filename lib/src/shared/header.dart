@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'leading_date.dart';
 
@@ -100,49 +102,36 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final forwardButton = GestureDetector(
-      onTap: onNextPage,
-      child: SizedBox(
-        width: 36,
-        height: 36,
-        child: DecoratedBox(
-          decoration: const BoxDecoration(
-            shape: BoxShape.circle,
-          ),
-          child: Icon(
-            Icons.arrow_forward_ios_rounded,
-            size: slidersSize,
-            color: slidersColor,
-          ),
-        ),
-      ),
-    );
+        onTap: onNextPage,
+        child: SvgPicture.asset(
+          "packages/date_picker_plus/assets/icons/arrowForward.svg",
+          color: slidersColor,
+          height: slidersSize,
+          width: slidersSize,
+        ));
 
     final backButton = GestureDetector(
-      onTap: onPreviousPage,
-      child: SizedBox(
-        width: 36,
-        height: 36,
-        child: DecoratedBox(
-          decoration: const BoxDecoration(
-            shape: BoxShape.circle,
-          ),
-          child: Icon(
-            Icons.arrow_back_ios_rounded,
-            size: slidersSize,
-            color: slidersColor,
-          ),
-        ),
-      ),
-    );
+        onTap: onPreviousPage,
+        child: SvgPicture.asset(
+          'packages/date_picker_plus/assets/icons/arrowBack.svg',
+          color: slidersColor,
+          height: slidersSize,
+          width: slidersSize,
+        ));
 
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: centerLeadingDate
+          ? MainAxisAlignment.center
+          : MainAxisAlignment.spaceBetween,
       children: [
         if (centerLeadingDate) backButton,
-        LeadingDate(
-          onTap: onDateTap,
-          displayedText: displayedDate,
-          displayedTextStyle: leadingDateTextStyle,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: LeadingDate(
+            onTap: onDateTap,
+            displayedText: displayedDate,
+            displayedTextStyle: leadingDateTextStyle,
+          ),
         ),
         if (centerLeadingDate)
           forwardButton

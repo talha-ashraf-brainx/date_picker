@@ -151,7 +151,8 @@ class DaysView extends StatelessWidget {
     MaterialLocalizations localizations,
   ) {
     final List<Widget> result = <Widget>[];
-    final weekdayNames = DateFormat('', locale.toString()).dateSymbols.SHORTWEEKDAYS;
+    final weekdayNames =
+        DateFormat('', locale.toString()).dateSymbols.SHORTWEEKDAYS;
 
     for (int i = localizations.firstDayOfWeekIndex; true; i = (i + 1) % 7) {
       // to save space in arabic as arabic don't has short week days.
@@ -160,7 +161,7 @@ class DaysView extends StatelessWidget {
         ExcludeSemantics(
           child: Center(
             child: Text(
-              weekday.toUpperCase(),
+              weekday,
               style: daysOfTheWeekTextStyle,
             ),
           ),
@@ -175,7 +176,8 @@ class DaysView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final MaterialLocalizations localizations = MaterialLocalizations.of(context);
+    final MaterialLocalizations localizations =
+        MaterialLocalizations.of(context);
     //
     //
     //
@@ -205,7 +207,8 @@ class DaysView extends StatelessWidget {
             dayToBuild.isBefore(_minDate) ||
             (disabledDayPredicate?.call(dayToBuild) ?? false);
 
-        final bool isSelectedDay = DateUtils.isSameDay(selectedDate, dayToBuild);
+        final bool isSelectedDay =
+            DateUtils.isSameDay(selectedDate, dayToBuild);
 
         final bool isCurrent = DateUtils.isSameDay(currentDate, dayToBuild);
         //
@@ -266,7 +269,8 @@ class DaysView extends StatelessWidget {
               // day of month before the rest of the date, as they are looking
               // for the day of month. To do that we prepend day of month to the
               // formatted full date.
-              label: '${localizations.formatDecimal(day)}, ${localizations.formatFullDate(dayToBuild)}',
+              label:
+                  '${localizations.formatDecimal(day)}, ${localizations.formatFullDate(dayToBuild)}',
               selected: isSelectedDay,
               excludeSemantics: true,
               child: dayWidget,

@@ -46,7 +46,7 @@ class LeadingDate extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Text(
-        displayedText,
+        displayedText.toUpperCase(),
         style: displayedTextStyle,
       ),
     );
